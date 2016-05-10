@@ -36,6 +36,17 @@
     self.enterZipCodeTextField.delegate = self;
     
     self.searchArray = [[NSMutableArray alloc] initWithObjects:@"78759", @"10001", @"95814", nil];
+    
+    [self drawBackGroundView];
+}
+
+- (void)drawBackGroundView {
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"weather"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 - (void)didReceiveMemoryWarning {
