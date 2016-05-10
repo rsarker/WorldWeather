@@ -19,8 +19,8 @@
 @property (nonatomic, strong) NSString *tempInF;
 @property (nonatomic, strong) NSString *visibility;
 @property (nonatomic, strong) NSString *weatherCode;
-@property (nonatomic, strong) NSArray *weatherDescription;
-@property (nonatomic, strong) NSArray *weatherIconUrl;
+@property (nonatomic, strong) NSDictionary *weatherDescription;
+@property (nonatomic, strong) NSDictionary *weatherIconUrl;
 @property (nonatomic, strong) NSString *windspeedMiles;
 @property (nonatomic, strong) NSString *windspeedKmph;
 

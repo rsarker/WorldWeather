@@ -13,7 +13,8 @@
 		6D8C1D0E1CDD6EEC003060C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D8C1D0C1CDD6EEC003060C1 /* LaunchScreen.storyboard */; };
 		6D8C1D191CDD6EED003060C1 /* WorldWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C1D181CDD6EED003060C1 /* WorldWeatherTests.m */; };
 		6D8C1D241CDD6EED003060C1 /* WorldWeatherUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C1D231CDD6EED003060C1 /* WorldWeatherUITests.m */; };
-		6DAAB2901CE1867C001BBEE8 /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAAB28F1CE1867C001BBEE8 /* WeatherTableViewCell.m */; };
+		6DAAB29A1CE1ADCB001BBEE8 /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAAB2991CE1ADCB001BBEE8 /* UIImage+Helper.m */; };
+		6DAAB2A61CE1B29C001BBEE8 /* NSDictionary+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAAB2A51CE1B29B001BBEE8 /* NSDictionary+Helper.m */; };
 		6DB6000A1CDEB2D500E2DD8D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB6FFE91CDEB2D500E2DD8D /* AFHTTPSessionManager.m */; };
 		6DB6000B1CDEB2D500E2DD8D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB6FFEC1CDEB2D500E2DD8D /* AFNetworkReachabilityManager.m */; };
 		6DB6000C1CDEB2D500E2DD8D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB6FFEE1CDEB2D500E2DD8D /* AFSecurityPolicy.m */; };
@@ -71,8 +72,10 @@
 		6D8C1D1F1CDD6EED003060C1 /* WorldWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8C1D231CDD6EED003060C1 /* WorldWeatherUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldWeatherUITests.m; sourceTree = "<group>"; };
 		6D8C1D251CDD6EED003060C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DAAB28E1CE1867C001BBEE8 /* WeatherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
-		6DAAB28F1CE1867C001BBEE8 /* WeatherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
+		6DAAB2981CE1ADCB001BBEE8 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
+		6DAAB2991CE1ADCB001BBEE8 /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
+		6DAAB2A41CE1B29B001BBEE8 /* NSDictionary+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Helper.h"; sourceTree = "<group>"; };
+		6DAAB2A51CE1B29B001BBEE8 /* NSDictionary+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Helper.m"; sourceTree = "<group>"; };
 		6DB600001CDEB2D500E2DD8D /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AFNetworking.h"; sourceTree = "<group>"; };
 		6DB600011CDEB2D500E2DD8D /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		6DB600021CDEB2D500E2DD8D /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -168,7 +171,8 @@
 		6D8C1CFA1CDD6EEA003060C1 /* WorldWeather */ = {
 			isa = PBXGroup;
 			children = (
-				6DAAB28D1CE18652001BBEE8 /* Weather Cell */,
+				6DAAB2A31CE1B283001BBEE8 /* NSDictionary Helper */,
+				6DAAB2971CE1ADB2001BBEE8 /* UIImage Helper */,
 				6DB6002B1CDED77A00E2DD8D /* Service */,
 				6DB6001D1CDEC80E00E2DD8D /* Weather Controller */,
 				6DB600191CDEB6B100E2DD8D /* Weather Model */,
@@ -211,13 +215,22 @@
 			path = WorldWeatherUITests;
 			sourceTree = "<group>";
 		};
-		6DAAB28D1CE18652001BBEE8 /* Weather Cell */ = {
+		6DAAB2971CE1ADB2001BBEE8 /* UIImage Helper */ = {
 			isa = PBXGroup;
 			children = (
-				6DAAB28E1CE1867C001BBEE8 /* WeatherTableViewCell.h */,
-				6DAAB28F1CE1867C001BBEE8 /* WeatherTableViewCell.m */,
+				6DAAB2981CE1ADCB001BBEE8 /* UIImage+Helper.h */,
+				6DAAB2991CE1ADCB001BBEE8 /* UIImage+Helper.m */,
 			);
-			name = "Weather Cell";
+			name = "UIImage Helper";
+			sourceTree = "<group>";
+		};
+		6DAAB2A31CE1B283001BBEE8 /* NSDictionary Helper */ = {
+			isa = PBXGroup;
+			children = (
+				6DAAB2A41CE1B29B001BBEE8 /* NSDictionary+Helper.h */,
+				6DAAB2A51CE1B29B001BBEE8 /* NSDictionary+Helper.m */,
+			);
+			name = "NSDictionary Helper";
 			sourceTree = "<group>";
 		};
 		6DB600191CDEB6B100E2DD8D /* Weather Model */ = {
@@ -504,7 +517,6 @@
 				6D8C1CFD1CDD6EEB003060C1 /* main.m in Sources */,
 				6DB600311CE00F1100E2DD8D /* WeatherManager.m in Sources */,
 				6DB600161CDEB2D500E2DD8D /* UIProgressView+AFNetworking.m in Sources */,
-				6DAAB2901CE1867C001BBEE8 /* WeatherTableViewCell.m in Sources */,
 				6DB6000B1CDEB2D500E2DD8D /* AFNetworkReachabilityManager.m in Sources */,
 				6DB600121CDEB2D500E2DD8D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6DB6001C1CDEB6F900E2DD8D /* WeatherCondition.m in Sources */,
@@ -512,7 +524,9 @@
 				6DB600141CDEB2D500E2DD8D /* UIButton+AFNetworking.m in Sources */,
 				6DB600171CDEB2D500E2DD8D /* UIRefreshControl+AFNetworking.m in Sources */,
 				6DB600181CDEB2D500E2DD8D /* UIWebView+AFNetworking.m in Sources */,
+				6DAAB29A1CE1ADCB001BBEE8 /* UIImage+Helper.m in Sources */,
 				6DB6000D1CDEB2D500E2DD8D /* AFURLRequestSerialization.m in Sources */,
+				6DAAB2A61CE1B29C001BBEE8 /* NSDictionary+Helper.m in Sources */,
 				6DB600101CDEB2D500E2DD8D /* AFAutoPurgingImageCache.m in Sources */,
 				6DB600231CDEC88200E2DD8D /* EnterZipCodeViewController.m in Sources */,
 				6DB600111CDEB2D500E2DD8D /* AFImageDownloader.m in Sources */,

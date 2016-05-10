@@ -11,6 +11,6 @@
 
 @interface WeatherDetailViewController : UIViewController
 
-- (void) updateWithWeatherData: (WeatherCondition *)weatherData;
+@property (nonatomic, strong) WeatherCondition *weatherData;
 
 @end

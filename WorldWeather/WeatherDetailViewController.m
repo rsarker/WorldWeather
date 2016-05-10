@@ -7,10 +7,24 @@
 //
 
 #import "WeatherDetailViewController.h"
+#import "NSDictionary+Helper.h"
 
 @interface WeatherDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *temparatureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *temparatureInCelciusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *temparatureFeelsLikeCelciusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *temparatureInFahrenheitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *temparatureFeelsLikeFahrenheitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *humidityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pressureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *visibilityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weatherCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weatherDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *windSpeedInMilesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *windSpeedInKmphLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
+
+
 
 @end
 
@@ -19,25 +33,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"Weather Detail";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateView];
+}
+
+- (void)updateView {
+    self.temparatureInCelciusLabel.text = [NSString stringWithFormat:@"%@ C", self.weatherData.tempInC];
+    self.temparatureFeelsLikeCelciusLabel.text = [NSString stringWithFormat:@"%@ C", self.weatherData.feelsLikeC];
+    self.temparatureInFahrenheitLabel.text = [NSString stringWithFormat:@"%@ F", self.weatherData.tempInF];
+    self.temparatureFeelsLikeFahrenheitLabel.text = [NSString stringWithFormat:@"%@ F", self.weatherData.feelsLikeF];
+    self.humidityLabel.text = [NSString stringWithFormat:@"%@ %@", self.weatherData.humidity, @"%"];
+    self.pressureLabel.text = [NSString stringWithFormat:@"%@ Pa", self.weatherData.pressure];
+    self.visibilityLabel.text = [NSString stringWithFormat:@"%@ SM", self.weatherData.visibility];
+    self.weatherCodeLabel.text = [NSString stringWithFormat:@"%@", self.weatherData.weatherCode];
+    self.weatherDescriptionLabel.text = [NSString stringWithFormat:@"%@", [self.weatherData.weatherDescription weatherDesc]];
+    self.windSpeedInMilesLabel.text = [NSString stringWithFormat:@"%@", self.weatherData.windspeedMiles];
+    self.windSpeedInKmphLabel.text = [NSString stringWithFormat:@"%@", self.weatherData.windspeedKmph];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)updateWithWeatherData:(WeatherCondition *)weatherData {
-    self.temparatureLabel.text = weatherData.tempInC;
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
