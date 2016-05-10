@@ -61,7 +61,8 @@ NSString *const WorldWeatherOnlineURLString = @"https://api.worldweatheronline.c
             NSError *weatherConditionError = nil;
             
             NSDictionary *conditionJsonDictionary = [responseObject[@"data"][@"current_condition"] firstObject];
-                    
+            
+            // TODO: Need to handle the error properly
             WeatherCondition *condition = [MTLJSONAdapter modelOfClass:[WeatherCondition class] fromJSONDictionary:conditionJsonDictionary error:&weatherConditionError];
 
             dispatch_async(dispatch_get_main_queue(), ^{

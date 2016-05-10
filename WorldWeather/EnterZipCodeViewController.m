@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.title = @"Weather Search";
     self.zipCodeList.dataSource = self;
@@ -35,10 +34,14 @@
     
     [WeatherManager sharedManager].delegate = self;
     self.enterZipCodeTextField.delegate = self;
-    self.zipCodeList.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.searchArray = [[NSMutableArray alloc] initWithObjects:@"78759", @"10001", @"95814", nil];
+    
     [self drawTableFooterView];
+    [self drawTableHeaderView];
 }
+
+#pragma mark - Table Header and Footer view helper methods
 
 - (void)drawTableFooterView {
     
@@ -52,9 +55,14 @@
     self.zipCodeList.tableFooterView = footerView;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)drawTableHeaderView {
+    CGFloat offset = 10.0;
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 25.0)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(offset, 0, headerView.bounds.size.width - offset, headerView.bounds.size.height)];
+    titleLabel.text = @"Zip Code List";
+    headerView.backgroundColor = [UIColor lightGrayColor];
+    [headerView addSubview:titleLabel];
+    self.zipCodeList.tableHeaderView = headerView;
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -69,7 +77,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ZipCodeCell"];
     }
     
-    cell.textLabel.text = @"Austin";
+    // TODO: The API for some reason not returning City name. Need to update textLabel with City name.
+    cell.textLabel.text = @"";
     cell.detailTextLabel.text = [self.searchArray objectAtIndex:indexPath.row];
     
     return  cell;
@@ -98,14 +107,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64.0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 25.0;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Zip Code list";
 }
 
 #pragma mark - Button Action

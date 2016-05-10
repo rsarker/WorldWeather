@@ -47,6 +47,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="zipCodeCell">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -56,6 +59,7 @@
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-Ws-x41">
                                 <rect key="frame" x="164" y="92" width="115" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="enterZipTextField"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="YXL-cl-fYF"/>
                                 </constraints>
@@ -73,6 +77,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z9-kr-FFV">
                                 <rect key="frame" x="300" y="92" width="48" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="searchButton"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchButtonTapped:" destination="uuB-Dq-k1Z" eventType="touchUpInside" id="w56-yw-ecR"/>
