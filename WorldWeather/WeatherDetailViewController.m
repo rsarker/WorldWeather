@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *windSpeedInKmphLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 
 @end
@@ -60,6 +61,8 @@
     self.weatherDescriptionLabel.text = [NSString stringWithFormat:@"%@", [self.weatherData.weatherDescription weatherDesc]];
     self.windSpeedInMilesLabel.text = [NSString stringWithFormat:@"%@", self.weatherData.windspeedMiles];
     self.windSpeedInKmphLabel.text = [NSString stringWithFormat:@"%@", self.weatherData.windspeedKmph];
+    
+    self.detailLabel.text = [NSString stringWithFormat:@"Showing Details For %@", self.zipCodeValue];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) WeatherCondition *condition;
 @property (nonatomic, strong) NSMutableArray *searchArray;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) NSString *selectedZipCode;
 
 @end
 
@@ -34,19 +35,21 @@
     
     [WeatherManager sharedManager].delegate = self;
     self.enterZipCodeTextField.delegate = self;
-    
+    self.zipCodeList.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
     self.searchArray = [[NSMutableArray alloc] initWithObjects:@"78759", @"10001", @"95814", nil];
-    
-    [self drawBackGroundView];
+    [self drawTableFooterView];
 }
 
-- (void)drawBackGroundView {
+- (void)drawTableFooterView {
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150.0)];
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"weather"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"weather"] drawInRect:footerView.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    footerView.backgroundColor = [UIColor colorWithPatternImage:image];
+    self.zipCodeList.tableFooterView = footerView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,9 +89,23 @@
 #pragma mark - UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self showActivityIndicator];
     UITableViewCell *selectedCell = [self.zipCodeList cellForRowAtIndexPath:indexPath];
+    self.selectedZipCode = selectedCell.detailTextLabel.text;
     [[WeatherManager sharedManager] updateWeatherForZipCode:selectedCell.detailTextLabel.text];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 64.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 25.0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Zip Code list";
 }
 
 #pragma mark - Button Action
@@ -104,6 +121,7 @@
         if (![self.searchArray containsObject:zipCode]) {
             [self.searchArray addObject:zipCode];
         }
+        self.selectedZipCode = zipCode;
         [[WeatherManager sharedManager] updateWeatherForZipCode:zipCode];
     }
 }
@@ -140,6 +158,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WeatherDetailViewController *detailController = [storyboard instantiateViewControllerWithIdentifier:@"WeatherDetailController"];
     detailController.weatherData = self.condition;
+    detailController.zipCodeValue = self.selectedZipCode;
     [self.navigationController pushViewController:detailController animated:YES];
 }
 

@@ -12,5 +12,6 @@
 @interface WeatherDetailViewController : UIViewController
 
 @property (nonatomic, strong) WeatherCondition *weatherData;
+@property (nonatomic, strong) NSString *zipCodeValue;
 
 @end
