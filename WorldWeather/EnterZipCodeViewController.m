@@ -85,6 +85,7 @@
 - (IBAction)searchButtonTapped:(UIButton *)sender {
     [self.enterZipCodeTextField resignFirstResponder];
     NSString *zipCode = self.enterZipCodeTextField.text;
+    self.enterZipCodeTextField.text = @"";
     if (!zipCode || [zipCode isEqualToString:@""]) {
         [self showAlertControllerWithTitle:@"Really!!" andMessage:@"Please Enter valid zip code"];
     } else {

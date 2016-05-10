@@ -14,7 +14,9 @@
     return self[@"value"];
 }
 - (NSString *)weatherIconUrlString {
-    return self[@"value"];
+    NSString *urlString = self[@"value"];
+    NSString *secureUrlString = [urlString stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    return secureUrlString;
 }
 
 @end

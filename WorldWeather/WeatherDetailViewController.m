@@ -8,6 +8,7 @@
 
 #import "WeatherDetailViewController.h"
 #import "NSDictionary+Helper.h"
+#import "UIImage+Helper.h"
 
 @interface WeatherDetailViewController ()
 
@@ -38,6 +39,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [UIImage loadFromURLString:[self.weatherData.weatherIconUrl weatherIconUrlString] callback:^(UIImage *image) {
+        
+        // Need to have better image quality to show images properly
+        self.weatherImageView.image = image;
+        self.weatherImageView.alpha = 0.4;
+    }];
     [self updateView];
 }
 

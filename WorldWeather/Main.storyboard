@@ -52,7 +52,7 @@
                                     <outlet property="delegate" destination="uuB-Dq-k1Z" id="Fad-EN-LZw"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-Ws-x41">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-Ws-x41">
                                 <rect key="frame" x="164" y="92" width="115" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="YXL-cl-fYF"/>
